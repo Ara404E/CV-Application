@@ -1,78 +1,84 @@
 import {useState} from 'react';
-
+import "../styles/personalDetails.css"
 
 function GeneralInfo({personalInfo ,  setPersonalInfo}){
     const [ isOpen , setOpen ] = useState(false)
     return(
-        <div className='dropdown-container'>
-            <button className='dropdown-btn' onClick={() => setOpen(!isOpen)}>
-                    {isOpen ? "▲" : "▼ Personal Details"}    
+<>
+        {/* <div className='sidebar'> */}
+                <div className='layout-div'>
+            <div className='layout-btn-div'>
+            <button className='layout-btn' onClick={() => setOpen(!isOpen)}>
+                    Show    
             </button>
-            <div className='header'>
-                <h1> {isOpen ? "Personal Details" : ""}  </h1>
+                </div>
             </div>
-        <div className={`dropdown-content ${isOpen ? "show" : "" }`}>
-            <div className='input-group'>
-        <label> Full Name </label>
-            <input 
-                type='text'
-                placeholder='Full Name'
-                value={personalInfo.name}
-                onChange={(e) => setPersonalInfo({ ...personalInfo , name: e.target.value})}
-                />
+        {/* </div> */}
+
+        <div className={`form-container ${isOpen ? "show" : ""}`}>
+    <div className="form-title-div">
+        <h3>{isOpen ? "personal details" : ""}</h3>
+    </div>
+
+    <div className="form">
+        <div className="personal-container">
+            <div className="personal-input-container">
+                <label>Full Name </label>
+                        <input
+                        type="text"
+                        value={personalInfo.name}
+                        placeholder="full name"
+                        onChange={(e) => setPersonalInfo({...personalInfo, name: e.target.value})}
+                        />
+                
+                        <label> Job Title </label>
+                        <input
+                        type="text"
+                        value={personalInfo.job}
+                        placeholder="Software Developer"
+                        onChange={(e) => setPersonalInfo({...personalInfo, job: e.target.value})}
+                        />
+                
+                        <label> Email </label>
+
+                        <input
+                        type="text"
+                        value={personalInfo.email}
+                        placeholder="full name"
+                        onChange={(e) => setPersonalInfo({...personalInfo, email: e.target.value})}
+                        />
+
+                      
+                        <label> Phone Number </label>
+                        <input
+                        type="tel"
+                        value={personalInfo.tel}
+                        placeholder="6969696969"
+                        onChange={(e) => setPersonalInfo({...personalInfo, tel: e.target.value})}
+                        />
+                    
+                
+                        <label> Address <span> ( optional ) </span></label>
+                        <input
+                        type="text"
+                        value={personalInfo.address}
+                        placeholder="Blue Island, metaverse"
+                        onChange={(e) => setPersonalInfo({...personalInfo, address: e.target.value})}
+                        />
+                    
+                        <label> summary <span>(not recommended)</span> </label>
+                        <textarea
+                        type="text"
+                        value={personalInfo.summary}
+                        placeholder="As a software developer i ...."
+                        onChange={(e) => setPersonalInfo({...personalInfo, summary: e.target.value})}
+                        />
             </div>
-            <div className='input-group'> 
-
-            <label> Job Title <span> (Optional) </span> </label>
-            <input
-                type='text'
-                placeholder='Software Developer'
-                value={personalInfo.job}
-                onChange={(e) => setPersonalInfo({...personalInfo , job: e.target.value})}
-                />
-                </div>
-             <div className='input-group'> 
-
-             <label> Email </label>
-            <input
-                type='email'
-                placeholder='jondoe@mail.com'
-                value={personalInfo.email}
-                onChange={(e) => setPersonalInfo({...personalInfo , email: e.target.value})}
-                />
-                </div>
-             <div className='input-group'> 
-
-             <label> Phone Number <span> (Optional) </span> </label>
-            <input
-                type='tel'
-                placeholder='770 432 7562'
-                value={personalInfo.tel}
-                onChange={(e) => setPersonalInfo({...personalInfo , tel: e.target.value})}
-                />
-                </div>
-             <div className='input-group'> 
-
-             <label> Address <span> (Optional) </span> </label>
-            <input
-                type='text'
-                placeholder='Blue Island, Metaverse'
-                value={personalInfo.address}
-                onChange={(e) => setPersonalInfo({...personalInfo , address: e.target.value})}
-                />
-                </div>
-             <div className='input-group'> 
-             <label> Summary <span> (not recommended) </span> </label>
-            <textarea
-                type='text'
-                placeholder='As a Software Developer'
-                value={personalInfo.summary}
-                onChange={(e) => setPersonalInfo({...personalInfo , summary: e.target.value})}
-                />
-                </div>
         </div>
-        <div/>
-                </div>
+    </div>
+</div>
+
+</>
     )
 }
 

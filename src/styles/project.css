@@ -1,0 +1,202 @@
+/* Main container styles */
+.layout-div {
+    margin: 20px 0;
+}
+
+.layout-btn {
+    background-color: #4a6fa5;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.layout-btn:hover {
+    background-color: #3a5a8f;
+}
+
+/* Form container styles */
+.form-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 10px;
+
+}
+
+.form-container.show {
+    max-height: 600px;
+    padding: 0;
+    border: 1px solid #dee2e6;
+}
+
+/* Scrollable content */
+.form-scrollable {
+    max-height: 600px;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+/* Project container */
+.project-container {
+    position: relative;
+    margin-bottom: 30px;
+    padding-left: 15px;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Animated border */
+.animated-border {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to top, #ff6b6b, #ff8e8e);
+    animation: borderAnimation 2s infinite alternate;
+}
+
+@keyframes borderAnimation {
+    0% {
+        background: linear-gradient(to top, #ff6b6b, #ff8e8e);
+        height: 100%;
+    }
+    100% {
+        background: linear-gradient(to top, #ff8e8e, #ff6b6b);
+        height: 30%;
+    }
+}
+
+/* Project content */
+.project-content {
+    padding: 15px;
+}
+
+.project-title {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+/* Table layout */
+.project-table {
+    display: table;
+    width: 100%;
+    margin-bottom: 15px;
+    border-collapse: collapse;
+}
+
+.table-row {
+    display: table-row;
+}
+
+.table-header {
+    display: table-cell;
+    padding: 8px;
+    font-weight: bold;
+    width: 120px;
+    vertical-align: top;
+    color: #495057;
+}
+
+.table-data {
+    display: table-cell;
+    padding: 8px;
+}
+
+.table-data input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Links section */
+.project-links {
+    margin-top: 15px;
+}
+
+.link-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.link-group label {
+    margin-right: 10px;
+    font-weight: 500;
+    color: #495057;
+    width: 60px;
+}
+
+.link-group input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Button styles */
+.remove-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.remove-btn:hover {
+    background-color: #c82333;
+}
+
+.add-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.add-btn:hover {
+    background-color: #218838;
+}
+
+/* Scrollbar styling */
+.form-scrollable::-webkit-scrollbar {
+    width: 8px;
+}
+
+.form-scrollable::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.form-scrollable::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.form-scrollable::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}

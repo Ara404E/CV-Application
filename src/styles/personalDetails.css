@@ -1,0 +1,44 @@
+
+.personal-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.personal-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+}
+
+.personal-input-container label {
+    font-weight: bold;
+}
+
+
+.personal-input-container input,
+.personal-input-container textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.personal-input-container input:focus,
+.personal-input-container textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+/* Aligning labels and inputs properly */
+.personal-input-container div {
+    display: flex;
+    flex-direction: column;
+}

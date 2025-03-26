@@ -1,7 +1,7 @@
 import { useState } from "react";
 import '../styles/cvPreview.css'
 
-function CvPreview({personalInfo , link , technicalSkill , workExperience , project , education}){
+function CvPreview({personalInfo , link , technicalSkill , workExperience , project , education , certification}){
 
     const [previewCv , setPreviewCv] = useState(false)
 
@@ -10,6 +10,7 @@ function CvPreview({personalInfo , link , technicalSkill , workExperience , proj
 
         <button className="cv-preview-btn" onClick={() => setPreviewCv(!previewCv)}> Preview cv </button>
         <div className={`cv-preview-content ${previewCv ? 'show' : ''}`}>
+                <div className="personal-details-section">
                 <h1> {personalInfo.name || "Your Name"}  </h1>
                 <h3> {personalInfo.job || "Job Title"} </h3>
                 <p> {link.website || "website URL"} <span> {link.websiteText || ' displayed text  '}  </span> 
@@ -20,7 +21,10 @@ function CvPreview({personalInfo , link , technicalSkill , workExperience , proj
                 <p> Phone Number: {personalInfo.tel || "969-969-969"} </p>
                 <p> Address: {personalInfo.address || "Blue Island, metaverse"} </p>
                 <p> summary: {personalInfo.summary || "Summary about yourself (not recommended)"} </p>
-                <hr/>
+                </div>
+                
+                <div className="technical-skill-section"> 
+
                 <h2> TECHNICAL SKILLS </h2>
                 <hr/>
                 <h3> Languages: </h3>
@@ -42,8 +46,10 @@ function CvPreview({personalInfo , link , technicalSkill , workExperience , proj
                             <li key={id}> {skill || "Tools & other Technologies"} </li>
                     )}
                     </ul>
+                    </div>
 
-                    <h2> WORK EXPERIENCE </h2>
+
+                    <h3> WORK EXPERIENCE </h3>
                     <hr/>
                             {workExperience.map((work)=> (
                                 <div className="work-experience-section" key={work.id}>
@@ -84,7 +90,24 @@ function CvPreview({personalInfo , link , technicalSkill , workExperience , proj
                                 </div>
                             </div>
                             ))}
-                </div>
+                
+                        <h3> CERTIFICATE & SKILL INTERESTS </h3>
+                    <hr/>
+                            <div className="certificate-section">
+                                <div className="row">
+                                    <h4> Certificate:</h4> <p>{certification.certificate || "If you have any relevant ones; otherwise leave blank"} </p>
+                                </div>
+                                <div className="row">
+                                    <h4> Skills:</h4> <p>{certification.skill || "Strategic Planning, Problem Solving, Leadership, Teamwork, etc"}  </p> 
+                                </div>
+                                <div className="row">
+                                    <h4> Interest:</h4> <p>{certification.interest || "Reading, sleeping, yoga, fishing, traveling, Reddit, Bear, Football"}  </p> 
+                                </div>
+                            </div>
+                    </div>
+
+
+
                     
 
 </div>

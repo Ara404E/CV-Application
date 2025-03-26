@@ -8,6 +8,8 @@ import CvPreview from './cvPreview.jsx';
 import WorkExperience from './workExperience.jsx';
 import Project from './project.jsx';
 import Education from './education.jsx';
+import Certification from './certification.jsx';
+
 
 
 function App() {
@@ -49,10 +51,34 @@ function App() {
         garduation : '' , address : '' }
     ])
 
+    const [certification , setCertification] = useState({
+        certificate : '' , skill : '' , interest : ''
+    })
+
+    
 
     return(
 
-        <div className='container'>
+ <div className='app'>
+
+    <div className='main-container'>
+
+            <GeneralInfo personalInfo={personalInfo} setPersonalInfo={setPersonalInfo} />
+
+            <Link link={link} setLink={setLink}/>
+
+            <TechnicalSkills technicalSkill={technicalSkill} setTechnicalSkill={setTechnicalSkill}/>
+
+            <WorkExperience workExperience={workExperience} setWorkExperince={setWorkExperince}/>
+
+            <Project project={project} setProject={setProject}/>
+
+            {/* <Education education={education} setEducation={setEducation} /> */}
+
+            {/* <Certification certification={certification} setCertification={setCertification}/> */}
+    
+
+            <div>
             <CvPreview 
             personalInfo={personalInfo} 
             link={link} 
@@ -60,15 +86,12 @@ function App() {
             workExperience={workExperience}
             project={project}
             education={education}
+            certification={certification}
             />
+            </div>
             
-            <GeneralInfo personalInfo={personalInfo} setPersonalInfo={setPersonalInfo} />
-            <Link link={link} setLink={setLink}/>
-            <TechnicalSkills technicalSkill={technicalSkill} setTechnicalSkill={setTechnicalSkill}/>
-            <WorkExperience workExperience={workExperience} setWorkExperince={setWorkExperince}/>
-            <Project project={project} setProject={setProject}/>
-            <Education education={education} setEducation={setEducation} />
         </div>
+    </div>
     )
 }
 

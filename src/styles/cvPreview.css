@@ -25,7 +25,7 @@
 }
 
 .cv-preview-content.show {
-    max-height: 600px;
+    max-height: 900px;
     opacity: 1;
     transform: scaleY(1);
     pointer-events: auto;
@@ -45,4 +45,15 @@ h3{
   display: flex;
   justify-content: space-between;
   padding: 2px;
+}
+
+.certificate-section{
+  display: flex;
+  flex-direction: column;
+}
+
+.row{
+  display: flex;
+  align-items: start; /* Aligns text at the top */
+  gap: 10px; /* Space between title and description */
 }

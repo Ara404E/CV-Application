@@ -4,83 +4,20 @@
     margin: 0; 
 }
 html{
-  background-color: #212121;
+  background-color: #FFEDFA;
 }
 
-.container{
+.app{
+  height: 100vh;
+}
+.main-container{
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  padding: 20px;
-}
-.header{
-    display: flex; 
-    margin: 5px auto;
-    color: whitesmoke;
-
-}
-
-.form-header{
-    display: flex;
-    justify-content: space-around;
-}
-
-.dropdown-btn {
-  background: #007bff;
-  color:white;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.dropdown-content {
-  position: relative; /* Keeps it in flow */
-  left: auto;
-  transform: scaleY(0); /* Collapsed */
-  transition: transform 0.3s ease-out;
-  opacity: 0;
-  height: 0; /* Prevents space when closed */
+  gap: 2rem;
+  height: 100%;
   overflow: hidden;
 }
-.dropdown-content.show {
-  transform: scaleY(1);
-  opacity: 1;
-  height: auto; /* Expands properly */
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column; /* Stack label above input */
-  align-items: flex-start; 
-  gap: 10px; /* Space between label & input */
-  padding: 10px;
-}
 
 
-.dropdown-content label {
-    width: 100%; /* Ensure labels are full width */
-    color: whitesmoke;
-    text-align: left;
-  }
-  
-.dropdown-content input {
-    flex: 1 1 calc(50% - 15px); 
-    padding: 8px;
-    background-color: #393E46;
-    border: none;
-    border-radius: 10px;
-    color: whitesmoke;
-  }
-  .dropdown-content textarea {
-    flex: 1 1 calc(50% - 15px); /* Two columns */
-    padding: 8px;
-    background-color: #393E46;
-    border: none;
-    border-radius: 10px;
-    color: whitesmoke;
-  }
-  
-  .dropdown-content span {
-    font-size: 0.7rem;
-    color:#696e75;
-}
+
+
 

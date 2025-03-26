@@ -1,0 +1,139 @@
+/* Main container styles */
+.layout-div {
+    margin: 20px 0;
+}
+
+.layout-btn {
+    background-color: #4a6fa5;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.layout-btn:hover {
+    background-color: #3a5a8f;
+}
+
+/* Form container styles */
+.form-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.form-container.show {
+    max-height: 500px; /* Fixed height */
+    padding: 20px;
+    border: 1px solid #dee2e6;
+}
+
+/* Scrollable form content */
+.form-scrollable {
+    height: 900px; /* Slightly less than container to account for padding */
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* Scrollbar styling */
+.form-scrollable::-webkit-scrollbar {
+    width: 8px;
+}
+
+.form-scrollable::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.form-scrollable::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.form-scrollable::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Skill category styles */
+.skill-category {
+    margin-bottom: 25px;
+}
+
+.category-title {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 18px;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 8px;
+}
+
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Skill item styles */
+.skill-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.skill-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.skill-input:focus {
+    outline: none;
+    border-color: #4a6fa5;
+    box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
+}
+
+/* Button styles */
+.add-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+    margin-top: 5px;
+    width: fit-content;
+}
+
+.add-btn:hover {
+    background-color: #218838;
+}
+
+.remove-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.remove-btn:hover {
+    background-color: #c82333;
+}
