@@ -1,25 +1,48 @@
-import { useState, useEffect } from "react";
+// Project.jsx
+import { useState } from "react";
 import "../styles/project.css";
 
 const Project = ({ project, setProject }) => {
-    const [isOpen, setOpen] = useState(false);
-
-    const addMore = () => {
+    const addProject = () => {
         setProject((prev) => 
             [...prev, {
                 id: crypto.randomUUID(), 
                 name: '', 
                 techStack: '', 
-                repoURL: '', 
-                repo: '', 
-                demoURL: '', 
-                demo: ''
+                bulletPoints: [''],
+                codeURL: '',
+                codeText: '',
+                demoURL: '',
+                demoText: ''
             }]
         )
     }
 
-    const remove = (id) => {
-        setProject((prev) => prev.filter(edu => edu.id !== id))
+    const addBulletPoint = (projectId) => {
+        setProject((prev) => 
+            prev.map((project) =>
+                project.id === projectId 
+                    ? { ...project, bulletPoints: [...project.bulletPoints, ''] } 
+                    : project
+            )
+        )
+    }
+
+    const removeProject = (id) => {
+        setProject((prev) => prev.filter(proj => proj.id !== id))
+    }
+
+    const removeBulletPoint = (projectId, index) => {
+        setProject((prev) => 
+            prev.map((project) =>
+                project.id === projectId 
+                    ? { 
+                        ...project, 
+                        bulletPoints: project.bulletPoints.filter((_, i) => i !== index) 
+                      } 
+                    : project
+            )
+        )
     }
 
     const handleInputChange = (id, field, value) => {
@@ -31,82 +54,115 @@ const Project = ({ project, setProject }) => {
     }
 
     return (
-        <>
-            <div className="layout-div">
-                <div className="layout-btn-div">
-                    <button onClick={() => setOpen(!isOpen)} className="layout-btn">
-                        {isOpen ? '▼' : '▶'} Projects
-                    </button>
-                </div>
-            </div>
-
-            <div className={`form-container ${isOpen ? "show" : ""}`}>
-                <div className="form-scrollable">
-                    {project.map(({id, name, techStack, repoURL, repo, demoURL, demo}) => (
-                        <div key={id} className="project-container">
-                            <div className="animated-border"></div>
-                            <div className="project-content">
-                                <h3 className="project-title">Project {project.indexOf(id) + 1}</h3>
-                                
-                                <div className="project-table">
-                                    <div className="table-row">
-                                        <div className="table-header">Name</div>
-                                        <div className="table-data">
-                                            <input
-                                                type="text"
-                                                value={name}
-                                                placeholder="TravelPlanner"
-                                                onChange={(e) => handleInputChange(id, "name", e.target.value)}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="table-row">
-                                        <div className="table-header">Tech Stack</div>
-                                        <div className="table-data">
-                                            <input
-                                                type="text"
-                                                value={techStack}
-                                                placeholder="HTML, CSS, React, TypeScript, Redux, Bootstrap, Express.js, PostgreSQL"
-                                                onChange={(e) => handleInputChange(id, "techStack", e.target.value)}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="project-links">
-                                    <div className="link-group">
-                                        <label>Code:</label>
-                                        <input
-                                            type="text"
-                                            value={repoURL}
-                                            placeholder="https://www.github.com/johndoe/TravelPlanner"
-                                            onChange={(e) => handleInputChange(id, "repoURL", e.target.value)}
-                                        />
-                                    </div>
-                                    <div className="link-group">
-                                        <label>Demo:</label>
-                                        <input
-                                            type="text"
-                                            value={demoURL}
-                                            placeholder="https://john-doe-travel-planner.herokuapp.com"
-                                            onChange={(e) => handleInputChange(id, "demoURL", e.target.value)}
-                                        />
-                                    </div>
-                                </div>
-
-                                <button onClick={() => remove(id)} className="remove-btn">
-                                    Remove
-                                </button>
+        <div className="project-form-container">
+            <div className="project-form-scrollable">
+                {project.map(({ id, name, techStack, bulletPoints, repoURL, repoText, demoURL, demoText }) => (
+                    <div key={id} className="project-container">
+                        <h3>Project {project.findIndex(p => p.id === id) + 1}</h3>
+                        
+                        <div className="project-top-form-row">
+                            <div className="form-top-section">
+                                <label>Name</label>
+                                <input
+                                    type="text"
+                                    value={name}
+                                    placeholder="TravelPlanner"
+                                    onChange={(e) => handleInputChange(id, "name", e.target.value)}
+                                />
+                            </div>
+                            
+                            <div className="form-top-section">
+                                <label>Tech Stack</label>
+                                <input
+                                    type="text"
+                                    value={techStack}
+                                    placeholder="HTML, CSS, React, TypeScript, Redux, Bootstrap, Express.js, PostgreSQL"
+                                    onChange={(e) => handleInputChange(id, "techStack", e.target.value)}
+                                />
                             </div>
                         </div>
-                    ))}
 
-                    <button onClick={addMore} className="add-btn">
-                        Add Project
-                    </button>
-                </div>
+                        {/* Bullet Points Section */}
+                        <div className="bullet-point-section">
+                            <label>Bullet Points</label>
+                            {bulletPoints.map((point, index) => (
+                                <div key={index} className="bullet-point-row">
+                                    <input
+                                        type="text"
+                                        value={point}
+                                        onChange={(e) => {
+                                            const newBullets = [...bulletPoints];
+                                            newBullets[index] = e.target.value;
+                                            handleInputChange(id, "bulletPoints", newBullets);
+                                        }}
+                                        placeholder="Developed a user-friendly web application for travel planning..."
+                                    />
+                                    <button
+                                        className="remove-bullet-btn"
+                                        onClick={() => removeBulletPoint(id, index)}
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                            ))}
+                            <button
+                                className="add-bullet-btn"
+                                onClick={() => addBulletPoint(id)}
+                            >
+                                Add more
+                            </button>
+                        </div>
+
+                        <div className="project-bottom-form-row">
+                            <div className="form-group">
+                                <label>Repo</label>
+                                <input
+                                    type="url"
+                                    value={repoURL}
+                                    placeholder="https://www.github.com/johndoe/TravelPlanner"
+                                    onChange={(e) => handleInputChange(id, "repoURL", e.target.value)}
+                                />
+                                <input
+                                    type="text"
+                                    value={repoText}
+                                    placeholder="Github Repo(Text)"
+                                    onChange={(e) => handleInputChange(id, "repo", e.target.value)}
+                                    />
+                            </div>
+                        </div>
+
+                        <div className="project-bottom-form-row">
+                            <div className="form-group">
+                                <label>Demo</label>
+                                <input
+                                    type="url"
+                                    value={demoURL}
+                                    placeholder="https://john-doe-travel-planner.herokuapp.com"
+                                    onChange={(e) => handleInputChange(id, "demoURL", e.target.value)}
+                                />
+                                <input
+                                    type="text"
+                                    value={demoText}
+                                    placeholder="Live Preview/Website(Text)"
+                                    onChange={(e) => handleInputChange(id, "demoText", e.target.value)}
+                                    />
+                            </div>
+                        </div>
+
+                        <button 
+                            onClick={() => removeProject(id)} 
+                            className="remove-project-btn"
+                        >
+                            Remove Project
+                        </button>
+                    </div>
+                ))}
+
+                <button onClick={addProject} className="add-project-btn">
+                    Add Project
+                </button>
             </div>
-        </>
+        </div>
     )
 }
 

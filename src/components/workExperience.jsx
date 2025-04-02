@@ -2,17 +2,33 @@ import { useState } from "react";
 import "../styles/workExperience.css";
 
 const WorkExperience = ({ workExperience, setWorkExperince }) => {
-    const [isOpen, setOpen] = useState(false);
 
     const addJob = () => {
         setWorkExperince(prev => 
             [...prev, {
-                id: crypto.randomUUID(),company: "", position: "", duration: "", address: ""}]
+                id: crypto.randomUUID(),company: "", position: "",
+                 duration: "", address: "" , extra:[{ specification: '' }]}]
+        )
+    }
+
+    const addSpecification = (workId) => {
+        setWorkExperince((prev) => 
+            prev.map((work) => 
+                work.id === workId ? {...work , extra: [...work.extra, {specification:''}]} : work
+            )
         )
     }
 
     const remove = (id) => {
         setWorkExperince(prev => prev.filter(exper => exper.id !== id))
+    }
+
+    const removeSpecification = (workId,extraIndex) => {
+        setWorkExperince((prev) => 
+            prev.map((work) => 
+                work.id === workId ? {...work,extra: work.extra.filter((_,index) => index != extraIndex)} : work
+            )
+        )
     }
 
     const handleInputChange = (id, field, value) => {
@@ -23,72 +39,105 @@ const WorkExperience = ({ workExperience, setWorkExperince }) => {
         )
     }
 
+    const handleExtraInputChange = (workId , extraIndex , value) =>{
+        setWorkExperince((prev) => 
+            prev.map((work)=>
+                work.id === workId ? {...work , extra: work.extra.map((specification,index)=>
+                    index === extraIndex ? {...specification , specification : value} : specification 
+                )} : work
+            )
+        )
+    }
+
+
     return (
         <>
-            <div className="layout-div">
-                <div className="layout-btn-div">
-                    <button className="layout-btn" onClick={() => setOpen(!isOpen)}>
-                        {isOpen ? '▼' : '▶'} Work Experience
-                    </button>
-                </div>
-            </div>
-
-            <div className={`form-container ${isOpen ? "show" : ""}`}>
+        <div className="work-form-container">
                 <div className="form-scrollable">
                     <div className="job-header">
-                        <h4>{workExperience.length === 1 ? <span> Most recent first </span> : "" }</h4>
-                      
                     </div>
-
-                    {workExperience.map(({id, company, position, duration, address}) => (
+                    {workExperience.map(({id, company, position, duration, address, extra } , index) => (
                         <div key={id} className="job-input-container">
-                            <div className="input-group">
-                                <label>Company Name</label>
-                                <input
-                                    type="text"
-                                    value={company}
-                                    placeholder="Company name"
-                                    onChange={(e) => handleInputChange(id, "company", e.target.value)}
-                                />
+                                <h4> { index === 0 ? 
+                                    <> <h4> Job {index + 1} </h4> <span> Most recent first </span> </>  
+                                    : `Job ${index + 1 }`} </h4>        
+                            <div className="input-row">
+                                <div className="input-group" style={{flex: 2}}>
+                                    <label>Company Name</label>
+                                    <input
+                                        type="text"
+                                        value={company}
+                                        placeholder="Company name"
+                                        onChange={(e) => handleInputChange(id, "company", e.target.value)}
+                                        />
+                                </div>
+
+                                <div className="input-group" style={{flex: 2}}>
+                                    <label>Job Title</label>
+                                    <input
+                                        type="text"
+                                        value={position}
+                                        placeholder="Job title"
+                                        onChange={(e) => handleInputChange(id, "position", e.target.value)}
+                                        />
+                                </div>
                             </div>
 
-                            <div className="input-group">
-                                <label>Job Title</label>
-                                <input
-                                    type="text"
-                                    value={position}
-                                    placeholder="Job title"
-                                    onChange={(e) => handleInputChange(id, "position", e.target.value)}
-                                />
-                            </div>
+                            <div className="input-row">
+                                <div className="input-group" style={{flex: 2}}>
+                                    <label>Duration</label>
+                                    <input
+                                        type="text"
+                                        value={duration}
+                                        placeholder="Month Year - Month Year/Present"
+                                        onChange={(e) => handleInputChange(id, "duration", e.target.value)}
+                                        />
+                                </div>
 
-                            <div className="input-group">
-                                <label>Duration</label>
-                                <input
-                                    type="text"
-                                    value={duration}
-                                    placeholder="2001"
-                                    onChange={(e) => handleInputChange(id, "duration", e.target.value)}
-                                />
+                                <div className="input-group" style={{flex: 2}}>
+                                    <label>Address (optional)</label>
+                                    <input
+                                        type="text"
+                                        value={address}
+                                        placeholder="City, State / City, Country"
+                                        onChange={(e) => handleInputChange(id, "address", e.target.value)}
+                                        />
+                                </div>
                             </div>
-
-                            <div className="input-group">
-                                <label>Address (optional)</label>
-                                <input
-                                    type="text"
-                                    value={address}
-                                    placeholder="Address"
-                                    onChange={(e) => handleInputChange(id, "address", e.target.value)}
-                                />
+                            
+                            <div className="bullet-points-section">
+                                <label>Bullet Points</label>
+                                {extra.map((specification, index) => (
+                                    <div key={index} className="bullet-point-input">
+                                        <input
+                                            type="text"
+                                            value={specification.specification}
+                                            onChange={(e) => handleExtraInputChange(id, index, e.target.value)}
+                                            placeholder="Add bullet point"
+                                        />
+                                        <button 
+                                            className="remove-bullet-btn"
+                                            onClick={() => removeSpecification(id, index)}
+                                        >
+                                            Remove
+                                        </button>
+                                    </div>
+                                ))}
+                                <button 
+                                    className="add-bullet-btn"
+                                    onClick={() => addSpecification(id)}
+                                >
+                                    Add more
+                                </button>
                             </div>
-
-                            <button className="remove-btn" onClick={() => remove(id)}>
+                            
+                            <button className="remove-work-btn" onClick={() => remove(id)}>
                                 Remove
                             </button>
                         </div>
                     ))}
 
-                    <button className="add-btn" onClick={addJob}>
+                    <button className="add-work-btn" onClick={addJob}>
                         Add Work Experience
                     </button>
                 </div>

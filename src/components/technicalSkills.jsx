@@ -1,8 +1,6 @@
-import { useState } from "react";
 import "../styles/technicalSkill.css";
 
 const TechnicalSkills = ({ technicalSkill, setTechnicalSkill }) => {
-    const [isOpen, setOpen] = useState(false);
 
     const addSkill = (category) => {
         setTechnicalSkill((prevSkills) => ({
@@ -28,23 +26,14 @@ const TechnicalSkills = ({ technicalSkill, setTechnicalSkill }) => {
     };
 
     return (
-        <>
-            <div className="layout-div">
-                <div className="layout-btn-div">
-                    <button className="layout-btn" onClick={() => setOpen(!isOpen)}>
-                        {isOpen ? '▼' : '▶'} Technical Skills
-                    </button>
-                </div>
-            </div>
-
-            <div className={`form-container ${isOpen ? "show" : ""}`}>
+            <div className="skill-form-container">
                 <div className="form-scrollable">
                     {Object.entries(technicalSkill).map(([category, skills]) => (
                         <div key={category} className="skill-category">
                             <h4 className="category-title">
                                 {category === 'languages' ? "Languages" :
                                     category === 'framework' ? "Frameworks, Libraries & Databases" :
-                                        "Tools & Other Technologies"}
+                                    "Tools & Other Technologies"}
                             </h4>
                             <div className="skills-list">
                                 {skills.map(({ id, skill }) =>
@@ -55,21 +44,20 @@ const TechnicalSkills = ({ technicalSkill, setTechnicalSkill }) => {
                                             placeholder="Enter Skill"
                                             onChange={(e) => handleSkillChange(category, id, e.target.value)}
                                             className="skill-input"
-                                        />
-                                        <button className="remove-btn" onClick={() => remove(category, id)}>
+                                            />
+                                        <button className="remove-skill-btn" onClick={() => remove(category, id)}>
                                             Remove
                                         </button>
                                     </div>
                                 )}
-                                <button className="add-btn" onClick={() => addSkill(category)}>
-                                    + Add Skill
+                                <button className="add-skill-btn" onClick={() => addSkill(category)}>
+                                    + Skill
                                 </button>
                             </div>
                         </div>
                     ))}
                 </div>
-            </div>
-        </>
+        </div>
     )
 }
 

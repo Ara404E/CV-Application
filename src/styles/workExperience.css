@@ -1,47 +1,17 @@
-/* Main container styles */
-.layout-div {
-    margin: 20px 0;
-}
-
-.layout-btn {
-    background-color: #4a6fa5;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-    transition: background-color 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.layout-btn:hover {
-    background-color: #3a5a8f;
-}
-
-/* Form container styles */
-.form-container {
-    max-height: 0;
-    overflow: hidden;
+.work-form-container {
+    height: auto; /* Changed from fixed to auto */
+    padding: 0;
+    border: 1px solid #dee2e6;
     transition: max-height 0.3s ease-out;
     background-color: #f8f9fa;
     border-radius: 8px;
     margin-top: 10px;
 }
 
-.form-container.show {
-    height: 500px; /* Fixed height for scrollable area */
-    padding: 0;
-    border: 1px solid #dee2e6;
-}
-
 /* Scrollable content */
 .form-scrollable {
-    max-height: 500px;
-    width: 500px;
+    max-height: 600px;
+    width: 100%;
     overflow-y: auto;
     padding: 20px;
 }
@@ -79,20 +49,24 @@
     font-size: 18px;
 }
 
-.most-recent-checkbox {
+/* Input row styles */
+.input-row {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    gap: 15px;
+    margin-bottom: 12px;
 }
 
 /* Input group styles */
 .job-input-container {
     margin-bottom: 20px;
-    padding-bottom: 15px;
+    padding: 15px;
     border-bottom: 1px solid #e9ecef;
+    background-color: white;
+    border-radius: 8px;
 }
 
 .input-group {
+    flex: 1;
     margin-bottom: 12px;
 }
 
@@ -101,6 +75,7 @@
     margin-bottom: 5px;
     color: #495057;
     font-size: 14px;
+    font-weight: bold;
 }
 
 .input-group input {
@@ -113,13 +88,41 @@
 
 .input-group input:focus {
     outline: none;
-    border-color: #4a6fa5;
+    border-color: #0c1e39;
     box-shadow: 0 0 0 2px rgba(74, 111, 165, 0.2);
 }
 
+/* Bullet points section */
+.bullet-points-section {
+    margin-top: 15px;
+}
+
+.bullet-points-section label {
+    display: block;
+    margin-bottom: 5px;
+    color: #495057;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.bullet-point-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.bullet-point-input input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
 /* Button styles */
-.remove-btn {
-    background-color: #dc3545;
+.remove-work-btn {
+    background-color: #F6416C;
     color: white;
     border: none;
     padding: 8px 15px;
@@ -127,14 +130,15 @@
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s;
+    margin-top: 10px;
 }
 
-.remove-btn:hover {
-    background-color: #c82333;
+.remove-work-btn:hover {
+    background-color: #FF2E63;
 }
 
-.add-btn {
-    background-color: #28a745;
+.add-work-btn {
+    background-color: #AFD3E2;
     color: white;
     border: none;
     padding: 8px 15px;
@@ -146,6 +150,38 @@
     margin-top: 10px;
 }
 
-.add-btn:hover {
-    background-color: #218838;
+.add-work-btn:hover {
+    background-color: #19A7CE;
+}
+
+.add-bullet-btn {
+    background-color: #f8f9fa;
+    color: #495057;
+    border: 1px solid #ced4da;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.3s;
+    margin-top: 5px;
+}
+
+.add-bullet-btn:hover {
+    background-color: #e9ecef;
+}
+
+.remove-bullet-btn {
+    background-color: #f8f9fa;
+    color: #F6416C;
+    border: 1px solid #F6416C;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.3s;
+}
+
+.remove-bullet-btn:hover {
+    background-color: #FF2E63;
+    color: white;
 }

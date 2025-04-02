@@ -1,15 +1,8 @@
-import { useState } from "react";
 import '../styles/cvPreview.css'
 
 function CvPreview({personalInfo , link , technicalSkill , workExperience , project , education , certification}){
-
-    const [previewCv , setPreviewCv] = useState(false)
-
     return (
-    <div className="cv-preview-container">
-
-        <button className="cv-preview-btn" onClick={() => setPreviewCv(!previewCv)}> Preview cv </button>
-        <div className={`cv-preview-content ${previewCv ? 'show' : ''}`}>
+        <div className={`cv-preview-content`}>
                 <div className="personal-details-section">
                 <h1> {personalInfo.name || "Your Name"}  </h1>
                 <h3> {personalInfo.job || "Job Title"} </h3>
@@ -88,10 +81,15 @@ function CvPreview({personalInfo , link , technicalSkill , workExperience , proj
                                     <h4> {education.graduation || "Graduation year"} </h4>
                                     <p> <i> {education.address || "Address" } </i> </p>
                                 </div>
-                            </div>
+                                <div>
+                                    {education.extra.map((project , index) => 
+                                        <li key={index}> {project.projectv} </li>
+                                    )}    
+                                </div>
+                            </div>    
                             ))}
                 
-                        <h3> CERTIFICATE & SKILL INTERESTS </h3>
+                        {/* <h3> CERTIFICATE & SKILL INTERESTS </h3>
                     <hr/>
                             <div className="certificate-section">
                                 <div className="row">
@@ -103,14 +101,8 @@ function CvPreview({personalInfo , link , technicalSkill , workExperience , proj
                                 <div className="row">
                                     <h4> Interest:</h4> <p>{certification.interest || "Reading, sleeping, yoga, fishing, traveling, Reddit, Bear, Football"}  </p> 
                                 </div>
-                            </div>
+                            </div> */}
                     </div>
-
-
-
-                    
-
-</div>
     )
 }
 

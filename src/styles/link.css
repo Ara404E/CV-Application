@@ -1,48 +1,18 @@
-/* Main container styles */
-.layout-div {
-    margin: 20px 0;
-}
-
-.layout-btn {
-    background-color: #4a6fa5;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-    transition: background-color 0.3s;
+.link-form-container{
     display: flex;
-    align-items: center;
-    gap: 8px;
+    justify-content: center;
+    margin: 12% 3%;
+    width: 600px;
+    height: 250px;
 }
 
-.layout-btn:hover {
-    background-color: #3a5a8f;
-}
 
-/* Form container styles */
-.form-container {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    margin-top: 10px;
-}
-
-.form-container.show {
-    max-height: 1000px;
-    padding: 20px;
-    border: 1px solid #dee2e6;
-}
-
-/* Links form styles */
-.links-form {
+.link-form{
     display: flex;
+    background-color: #31363e;
     flex-direction: column;
-    gap: 10px;
+    border-radius: 10px;
+    padding: 50px;
 }
 
 .links-header {
@@ -53,6 +23,7 @@
     padding-bottom: 8px;
     border-bottom: 1px solid #dee2e6;
     margin-bottom: 10px;
+    color: #9ADCFF;
 }
 
 .link-row {
@@ -64,7 +35,7 @@
 
 .link-label {
     font-weight: 500;
-    color: #495057;
+    color: #B8E8FC;
 }
 
 .link-input {
@@ -72,7 +43,9 @@
     border: 1px solid #ced4da;
     border-radius: 4px;
     font-size: 14px;
+    background-color: #F8E8EE;
     transition: border-color 0.3s;
+    margin: 3px;
 }
 
 .link-input:focus {

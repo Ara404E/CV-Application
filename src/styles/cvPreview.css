@@ -1,34 +1,32 @@
-
-
-.cv-preview-btn {
-  width: 100px;
-  height: 100px;
-  font-size: 20px;
-  color:black;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.cv-preview-container{
+  visibility: hidden;
+  position: fixed;
+  right: -100%;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: white;
+  box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  transition: right 0.3s ease; /* Uncomment this line */
+  overflow-y: auto;
+  z-index: 10;
 }
+
+.cv-preview-container.active{
+  visibility: visible;
+  right: 0;
+}
+
 .cv-preview-content {
-    flex: 1;
-    background: #ffffff;
-    padding: 20px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-    max-height: 0;
-    opacity: 0;
-    transform: scaleY(0);
-    pointer-events: none;
-    transition: max-height 0.4s ease-out, opacity 0.3s ease-out, transform 0.3s ease-out;
-}
+  flex: 1;
+  padding: 20px;
+  background: #ffffff;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  max-height: 900px;
+  transform: scaleY(1);
 
-.cv-preview-content.show {
-    max-height: 900px;
-    opacity: 1;
-    transform: scaleY(1);
-    pointer-events: auto;
 }
 
 

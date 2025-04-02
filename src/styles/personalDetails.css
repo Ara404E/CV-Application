@@ -1,44 +1,75 @@
+.personal-form-container{
+    width: 500px;
+}
 
-.personal-container {
-    display: flex;
-    flex-direction: column;
+.personal-form {
     width: 100%;
+    margin-top: 40px;
+    background-color: #03224c ;
+    padding: 25px;
+    border-radius: 10px;
+    overflow-y: auto;
+    
 }
 
-.personal-input-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
+.personal-form h2 {
+    margin: 0 0 20px 0;
+    font-size: 1.5rem;
+    color: #9ADCFF;
+}
+
+.personal-form-row {
+    margin-bottom: 20px;
+}
+
+.labeled-input {
     width: 100%;
+    margin-bottom: 15px;
 }
 
-.personal-input-container label {
-    font-weight: bold;
+.labeled-input > label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #FFC7EA;
+    
 }
 
-
-.personal-input-container input,
-.personal-input-container textarea {
+.labeled-input > input, textarea {
     width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
+    padding: 10px;
+    border: 1px solid #9ADCFF;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #F8E8EE;
 }
-.personal-input-container input:focus,
-.personal-input-container textarea:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+
+.labeled-input > input:focus, textarea:focus {
     outline: none;
+    border-color: #e67a7a;
 }
 
-textarea {
-    resize: none;
-    height: 80px;
+.labeled-input > textarea {
+    resize: vertical;
+    min-height: 100px;
 }
 
-/* Aligning labels and inputs properly */
-.personal-input-container div {
-    display: flex;
-    flex-direction: column;
+.divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 20px 0;
+}
+
+.optional {
+    color: #e67a7a;
+    font-weight: 400;
+    font-size: 0.9em;
+}
+
+.not-recommended {
+    color: #e67a7a;
+    font-weight: 400;
+    font-size: 0.9em;
+    font-style: italic;
 }

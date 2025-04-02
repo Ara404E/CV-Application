@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import "../styles/certification.css"
 
 
 
@@ -7,24 +8,21 @@ const Certification = ({certification , setCertification}) =>{
 
     const [isOpen , setOpen] = useState(false)
     return (
-        <div>
-            <div className='form-container'>
-
-            <div className='layout-btn-div'>
-            <button onClick={ () => setOpen(!isOpen) } className='layout-btn'>
-                 {isOpen ? "▲" :  " ▼  Certification & Skill Interest "}  </button> 
-            </div>
-                    <div className={`form ${isOpen ? "show" : "" }`}>
+            <div className='certificate-form-container'>
+                    <div className={`certificate-form`}>
+                        <label> Certificates </label>
                             <textarea
                             value={certification.certificate}
                             placeholder='If you have any relevant ones; otherwise leave blank'
                             onChange={(e) => setCertification({...certification , certificate : e.target.value })}
                             />
+                            <label> Skills </label>
                             <textarea
                             value={certification.skill}
                             placeholder='Strategic Planning, Problem Solving, Leadership, Teamwork, etc'
                             onChange={(e) => setCertification({...certification , skill: e.target.value })}
                             />
+                            <label>Interest</label>
                             <textarea
                             value={certification.interest}
                             placeholder='Reading, sleeping, yoga, fishing, traveling, Reddit, Bear, Football'
@@ -32,8 +30,7 @@ const Certification = ({certification , setCertification}) =>{
                             />
                     </div>
             </div>
-
-        </div>
+        
     )
 }
 

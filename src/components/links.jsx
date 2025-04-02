@@ -1,21 +1,10 @@
-import { useState } from "react";
 import "../styles/link.css"
 
 const Link = ({ link, setLink }) => {
-    const [isOpen, setOpen] = useState(false);
     
-    return (
-        <>
-            <div className="layout-div">
-                <div className="layout-btn-div">
-                    <button className="layout-btn" onClick={() => setOpen(!isOpen)}>
-                        {isOpen ? '▼' : '▶'} Links
-                    </button>
-                </div>
-            </div>
-            
-            <div className={`form-container ${isOpen ? "show" : ""}`}>
-                <div className="links-form">
+    return (       
+            <div className="link-form-container">
+                <div className="link-form">
                     <div className="links-header">
                         <div className="header-label">Platform</div>
                         <div className="header-url">URL</div>
@@ -31,14 +20,14 @@ const Link = ({ link, setLink }) => {
                             placeholder="www.johndoe.com"
                             onChange={(e) => setLink({ ...link, website: e.target.value })}
                             className="link-input url-input"
-                        />
+                            />
                         <input
                             type="text"
                             value={link.websiteText}
                             placeholder="portfolio"
                             onChange={(e) => setLink({ ...link, websiteText: e.target.value })}
                             className="link-input text-input"
-                        />
+                            />
                     </div>
                     
                     {/* LinkedIn */}
@@ -50,14 +39,14 @@ const Link = ({ link, setLink }) => {
                             placeholder="www.linkedin.com/john doe"
                             onChange={(e) => setLink({ ...link, linkedin: e.target.value })}
                             className="link-input url-input"
-                        />
+                            />
                         <input
                             type="text"
                             value={link.linkedinText}
                             placeholder="LinkedIn"
                             onChange={(e) => setLink({ ...link, linkedinText: e.target.value })}
                             className="link-input text-input"
-                        />
+                            />
                     </div>
                     
                     {/* GitHub */}
@@ -69,18 +58,17 @@ const Link = ({ link, setLink }) => {
                             placeholder="www.github.com/johndoe"
                             onChange={(e) => setLink({ ...link, github: e.target.value })}
                             className="link-input url-input"
-                        />
+                            />
                         <input
                             type="text"
                             value={link.githubText}
                             placeholder="github"
                             onChange={(e) => setLink({ ...link, githubText: e.target.value })}
                             className="link-input text-input"
-                        />
+                            />
                     </div>
                 </div>
             </div>
-        </> 
     )
 }
 
