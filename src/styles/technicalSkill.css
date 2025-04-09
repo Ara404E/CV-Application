@@ -1,38 +1,42 @@
+.skill-form-container{
+    max-height: 600px;
+    width: 500px;
+    margin: 5% 10%;
+}
 
-.skill-form-container {
-    max-height: 600px; /* Fixed height */
+
+
+.skill-form {
     padding: 20px;
-    border: 1px solid #dee2e6;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
-    background-color: #31363e;
+    background-color: #03224c;
     border-radius: 8px;
-    margin-top: 10px;
 }
 
 /* Scrollable form content */
-.form-scrollable {
-    height: 900px; /* Slightly less than container to account for padding */
+.skill-form-scrollable {
+    height: 500px; 
     overflow-y: auto;
     padding-right: 10px;
 }
 
 /* Scrollbar styling */
-.form-scrollable::-webkit-scrollbar {
-    width: 8px;
+.skill-form-scrollable::-webkit-scrollbar {
+    width: 3px;
 }
 
-.form-scrollable::-webkit-scrollbar-track {
-    background: #f1f1f1;
+.skill-form-scrollable::-webkit-scrollbar-track {
+    background: #03224c;
     border-radius: 4px;
 }
 
-.form-scrollable::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
+.skill-form-scrollable::-webkit-scrollbar-thumb {
+    background: #19A7CE;
     border-radius: 4px;
 }
 
-.form-scrollable::-webkit-scrollbar-thumb:hover {
+.skill-form-scrollable::-webkit-scrollbar-thumb:hover {
     background: #a8a8a8;
 }
 
@@ -42,10 +46,10 @@
 }
 
 .category-title {
-    color: #9ADCFF;
+    color: #FFC7EA;
     margin-bottom: 15px;
     font-size: 18px;
-    border-bottom: 2px solid #e9ecef;
+    border-bottom: 2px solid #19A7CE;
     padding-bottom: 8px;
 }
 

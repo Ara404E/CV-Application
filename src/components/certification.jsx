@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import "../styles/certification.css"
 
 
@@ -6,9 +5,8 @@ import "../styles/certification.css"
 
 const Certification = ({certification , setCertification}) =>{
 
-    const [isOpen , setOpen] = useState(false)
     return (
-            <div className='certificate-form-container'>
+            <div className='certificate-container'>
                     <div className={`certificate-form`}>
                         <label> Certificates </label>
                             <textarea

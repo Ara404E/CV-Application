@@ -1,5 +1,4 @@
 // Project.jsx
-import { useState } from "react";
 import "../styles/project.css";
 
 const Project = ({ project, setProject }) => {
@@ -54,12 +53,12 @@ const Project = ({ project, setProject }) => {
     }
 
     return (
-        <div className="project-form-container">
+    <div className="project-container">
+        <div className="project-form">
             <div className="project-form-scrollable">
                 {project.map(({ id, name, techStack, bulletPoints, repoURL, repoText, demoURL, demoText }) => (
-                    <div key={id} className="project-container">
+                    <div key={id} className="project-input-container">
                         <h3>Project {project.findIndex(p => p.id === id) + 1}</h3>
-                        
                         <div className="project-top-form-row">
                             <div className="form-top-section">
                                 <label>Name</label>
@@ -68,7 +67,7 @@ const Project = ({ project, setProject }) => {
                                     value={name}
                                     placeholder="TravelPlanner"
                                     onChange={(e) => handleInputChange(id, "name", e.target.value)}
-                                />
+                                    />
                             </div>
                             
                             <div className="form-top-section">
@@ -78,7 +77,7 @@ const Project = ({ project, setProject }) => {
                                     value={techStack}
                                     placeholder="HTML, CSS, React, TypeScript, Redux, Bootstrap, Express.js, PostgreSQL"
                                     onChange={(e) => handleInputChange(id, "techStack", e.target.value)}
-                                />
+                                    />
                             </div>
                         </div>
 
@@ -96,20 +95,20 @@ const Project = ({ project, setProject }) => {
                                             handleInputChange(id, "bulletPoints", newBullets);
                                         }}
                                         placeholder="Developed a user-friendly web application for travel planning..."
-                                    />
+                                        />
                                     <button
                                         className="remove-bullet-btn"
                                         onClick={() => removeBulletPoint(id, index)}
-                                    >
-                                        Remove
+                                        >
+                                        -
                                     </button>
                                 </div>
                             ))}
                             <button
                                 className="add-bullet-btn"
                                 onClick={() => addBulletPoint(id)}
-                            >
-                                Add more
+                                >
+                                +
                             </button>
                         </div>
 
@@ -121,7 +120,7 @@ const Project = ({ project, setProject }) => {
                                     value={repoURL}
                                     placeholder="https://www.github.com/johndoe/TravelPlanner"
                                     onChange={(e) => handleInputChange(id, "repoURL", e.target.value)}
-                                />
+                                    />
                                 <input
                                     type="text"
                                     value={repoText}
@@ -139,7 +138,7 @@ const Project = ({ project, setProject }) => {
                                     value={demoURL}
                                     placeholder="https://john-doe-travel-planner.herokuapp.com"
                                     onChange={(e) => handleInputChange(id, "demoURL", e.target.value)}
-                                />
+                                    />
                                 <input
                                     type="text"
                                     value={demoText}
@@ -151,18 +150,19 @@ const Project = ({ project, setProject }) => {
 
                         <button 
                             onClick={() => removeProject(id)} 
-                            className="remove-project-btn"
-                        >
+                            className="remove-btn"
+                            >
                             Remove Project
                         </button>
                     </div>
                 ))}
 
-                <button onClick={addProject} className="add-project-btn">
+                <button onClick={addProject} className="add-btn">
                     Add Project
                 </button>
             </div>
         </div>
+    </div>
     )
 }
 

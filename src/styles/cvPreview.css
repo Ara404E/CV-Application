@@ -29,6 +29,11 @@
 
 }
 
+.link-section{
+  display: flex;
+  gap: 25px;
+}
+
 
 .work-experience-section{
   display: flex;
@@ -47,7 +52,7 @@ h3{
 
 .certificate-section{
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  
 }
 
 .row{

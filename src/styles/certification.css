@@ -1,35 +1,34 @@
-.certificate-form-container{
-    width: 50%;
-    height:65%;
-    margin-top: 40px;
-    background-color: white;
-    padding: 25px;
-    border-radius: 10px;
-    overflow-y: auto;
+.certificate-container{
+    max-height: 700px;
+    width: 500px;
+    margin: 7% 10%;
+    border: none;
 }
 .certificate-form{
-    width: 100%;
-
+    padding: 15px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #03224c;
+    border-radius: 8px;
 }
 
-label {
+.certificate-form label {
     display: block;
     margin-bottom: 5px;
     font-weight: 600;
-    color: #333;
+    color: #FFC7EA;
 }
 
-textarea {
+.certificate-form textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 14px;
     resize: vertical;
-    min-height: 100px;
+    min-height: 80px;
 }
 
-textarea:focus {
+.certificate-form textarea:focus {
     outline: none;
     border-color: #4a6fa5;
 }

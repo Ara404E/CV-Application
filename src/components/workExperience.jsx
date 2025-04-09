@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "../styles/workExperience.css";
 
 const WorkExperience = ({ workExperience, setWorkExperince }) => {
@@ -51,16 +50,17 @@ const WorkExperience = ({ workExperience, setWorkExperince }) => {
 
 
     return (
-        <>
+    <div className="work-container">
         <div className="work-form-container">
-                <div className="form-scrollable">
+                <div className="work-form-scrollable">
                     <div className="job-header">
                     </div>
                     {workExperience.map(({id, company, position, duration, address, extra } , index) => (
                         <div key={id} className="job-input-container">
-                                <h4> { index === 0 ? 
-                                    <> <h4> Job {index + 1} </h4> <span> Most recent first </span> </>  
-                                    : `Job ${index + 1 }`} </h4>        
+                            <div className="form-header">
+                            { index === 0 ? <> <h4> Job {index + 1} </h4> <span> Most recent first </span> </>  
+                                    : <h4> Job {index + 1 } </h4>}         
+                            </div>
                             <div className="input-row">
                                 <div className="input-group" style={{flex: 2}}>
                                     <label>Company Name</label>
@@ -95,7 +95,7 @@ const WorkExperience = ({ workExperience, setWorkExperince }) => {
                                 </div>
 
                                 <div className="input-group" style={{flex: 2}}>
-                                    <label>Address (optional)</label>
+                                    <label>Address <span className="optional"> optional </span> </label>
                                     <input
                                         type="text"
                                         value={address}
@@ -108,41 +108,41 @@ const WorkExperience = ({ workExperience, setWorkExperince }) => {
                             <div className="bullet-points-section">
                                 <label>Bullet Points</label>
                                 {extra.map((specification, index) => (
-                                    <div key={index} className="bullet-point-input">
+                                    <div key={index} className="bullet-point">
                                         <input
                                             type="text"
                                             value={specification.specification}
                                             onChange={(e) => handleExtraInputChange(id, index, e.target.value)}
                                             placeholder="Add bullet point"
-                                        />
+                                            />
                                         <button 
                                             className="remove-bullet-btn"
                                             onClick={() => removeSpecification(id, index)}
-                                        >
-                                            Remove
+                                            >
+                                            -
                                         </button>
                                     </div>
                                 ))}
                                 <button 
                                     className="add-bullet-btn"
                                     onClick={() => addSpecification(id)}
-                                >
-                                    Add more
+                                    >
+                                    +
                                 </button>
                             </div>
                             
-                            <button className="remove-work-btn" onClick={() => remove(id)}>
+                            <button className="remove-btn" onClick={() => remove(id)}>
                                 Remove
                             </button>
                         </div>
                     ))}
 
-                    <button className="add-work-btn" onClick={addJob}>
+                    <button className="add-btn" onClick={addJob}>
                         Add Work Experience
                     </button>
                 </div>
             </div>
-        </>
+                    </div>
     )
 }
 

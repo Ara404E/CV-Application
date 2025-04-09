@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
 import { Tooltip } from 'react-tooltip';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import 'react-tooltip/dist/react-tooltip.css'; // Don't forget this import
-import { faUser, faLink, faBrain, faBriefcase, faFolderOpen, faUserGraduate, faAward , faEye } from "@fortawesome/free-solid-svg-icons";
+import 'react-tooltip/dist/react-tooltip.css'; 
+import { faUser, faLink, faBrain, faBriefcase, faFolderOpen, faUserGraduate, faAward , faEye, faTrash, faEyeSlash,faFileArrowDown } from "@fortawesome/free-solid-svg-icons";
 import '../styles/App.css'
 import FontSwitcher from './fontSwitcher'; 
 import GeneralInfo from './generalInfo';
@@ -13,14 +13,16 @@ import WorkExperience from './workExperience.jsx';
 import Project from './project.jsx';
 import Education from './education.jsx';
 import Certification from './certification.jsx';
+import DownloadCv from './downloadCv.jsx'
+import { useLocalStorage } from './localStorage.js';
 
 function App() {
-    const [activeForm, setActiveForm] = useState('personal');
-    const [preview, setPreview] = useState(false);
+    const [activeForm, setActiveForm] = useLocalStorage('activeForm' , 'personal');
+    const [preview, setPreview] = useLocalStorage( "preview" , false);
 
 
 
-    const [personalInfo, setPersonalInfo] = useState({
+    const [personalInfo, setPersonalInfo] = useLocalStorage( 'personalInfo' , {
         name: "",
         job: "",
         email: "",
@@ -29,7 +31,7 @@ function App() {
         summary: "",
     });
 
-    const [link, setLink] = useState({
+    const [link, setLink] = useLocalStorage("link" , {
         website: "",
         websiteText: '',
         linkedin: "",
@@ -38,28 +40,28 @@ function App() {
         githubText: ''
     });
 
-    const [technicalSkill, setTechnicalSkill] = useState({
+    const [technicalSkill, setTechnicalSkill] = useLocalStorage( "technicalSkill" ,{
         languages: [{ id: crypto.randomUUID(), skill: '' }],
         frameworks: [{ id: crypto.randomUUID(), skill: '' }],
         tools: [{ id: crypto.randomUUID(), skill: '' }]
     });
 
-    const [workExperience, setWorkExperince] = useState([
+    const [workExperience, setWorkExperince] = useLocalStorage( "workExperience"  ,[
         { id: crypto.randomUUID(), company: '', position: '',
              duration: '', address: '' , extra:[{ specification: '' }] }
     ]);
 
-    const [project, setProject] = useState([
+    const [project, setProject] = useLocalStorage( "project" , [
         { id: crypto.randomUUID(), name: '', techStack: '', bulletPoints:[''] , repoURL: ''
         , repo: '', demoURL: '', demo: '' }
     ]);
 
-    const [education, setEducation] = useState([
+    const [education, setEducation] = useLocalStorage( "education" ,  [
         { id: crypto.randomUUID(), university: '', degree: '', graduation: '', address: '',
           extra: [{ project: '' }] }
     ]);
 
-    const [certification, setCertification] = useState({
+    const [certification, setCertification] = useLocalStorage( "certification" , {
         certificate: '', skill: '', interest: ''
     });
 
@@ -68,7 +70,7 @@ function App() {
             {/* Sidebar Navigation */}
             <div className='sidebar'>
                 <button 
-                    className={`nav-btn ${activeForm === 'personal' ? 'active' : ''}`}
+                    className={`nav-btn ${activeForm === 'personal' && 'active'}`}
                     onClick={() => setActiveForm('personal')}
                     data-tooltip-id="personal-details-tooltip"  // Changed to more unique ID
                     data-tooltip-content="Personal Details"
@@ -81,7 +83,7 @@ function App() {
                     className={`tooltip`}
                 />
                 <button 
-                    className={`nav-btn ${activeForm === 'links' ? 'active' : ''}`}
+                    className={`nav-btn ${activeForm === 'links' && 'active'}`}
                     onClick={() => setActiveForm('links')}
                     data-tooltip-id='link-tooltip'
                     data-tooltip-content="Links"
@@ -94,7 +96,7 @@ function App() {
                         className='tooltip'
                     />
                 <button 
-                    className={`nav-btn ${activeForm === 'skills' ? 'active' : ''}`}
+                    className={`nav-btn ${activeForm === 'skills' && 'active'}`}
                     onClick={() => setActiveForm('skills')}
                     data-tooltip-id="technical-skill-tooltip"
                     data-tooltip-content="Technical Skills"
@@ -107,7 +109,7 @@ function App() {
                         className='tooltip'
                     />
                 <button 
-                    className={`nav-btn ${activeForm === 'work' ? 'active' : ''}`}
+                    className={`nav-btn ${activeForm === 'work' && 'active'}`}
                     onClick={() => setActiveForm('work')}
                     data-tooltip-id='work-tooltip'
                     data-tooltip-content='Work Experience'
@@ -120,7 +122,7 @@ function App() {
                         className='tooltip'
                     />
                 <button 
-                    className={`nav-btn ${activeForm === 'projects' ? 'active' : ''}`}
+                    className={`nav-btn ${activeForm === 'projects' && 'active'}`}
                     onClick={() => setActiveForm('projects')}
                     data-tooltip-id='project-tooltip'
                     data-tooltip-content='Project'
@@ -133,7 +135,7 @@ function App() {
                         className='tooltip'
                     />
                 <button 
-                    className={`nav-btn ${activeForm === 'education' ? 'active' : ''}`}
+                    className={`nav-btn ${activeForm === 'education' && 'active'}`}
                     onClick={() => setActiveForm('education')}
                     data-tooltip-id='education-tooltip'
                     data-tooltip-content='Education'
@@ -145,7 +147,7 @@ function App() {
                         id='education-tooltip'
                         className='tooltip'
                     />
-                <button className={`nav-btn ${preview ? "active" : '' }`}
+                <button className={`nav-btn ${activeForm=== 'certificate' && "active"}`}
                     onClick={() => setActiveForm("certificate")}
                     data-tooltip-id='certificate-tooltip'
                     data-tooltip-content='Certification, Skills & Interest'
@@ -157,23 +159,66 @@ function App() {
                         id='certificate-tooltip'
                         className='tooltip'
                     />
-                <button
-                    className={`nav-btn ${preview ? 'active' : ''}`}
-                    onClick={() => setPreview(!preview)}
-                    data-tooltip-id='cv-preview-tooltip'
-                    data-tooltip-content='Preview CV'
+            <div className='midway-sidebar'>
+
+            <button
+                    className={`nav-btn ${  preview && 'active'}`}
+                    onClick={() => setPreview(!preview) }
+                    disabled={activeForm === 'downloadCv'} // 👈 this disables the button
+                    data-tooltip-id='live-preview-tooltip'
                     data-tooltip-place="right"
+
                 >
-                    <FontAwesomeIcon icon={faEye} size='2x' />
+                <FontAwesomeIcon icon={ preview ? faEyeSlash : faEye} size='2x'  />      
                 </button>
                 <Tooltip
-                    id='cv-preview-tooltip'
+                    id='live-preview-tooltip'
                     className='tooltip'
-                />
-            </div>
+                    content={
+                        activeForm === 'downloadCv' ? 'Preview disabled whilst on download preview' :
+                        preview ? 'Editior only' : "Live Preview"}
+                /> 
 
+                
+            </div>
+            <div className='end-sidebar'>
+            <button className={`nav-btn ${activeForm === 'downloadCv' && 'active'} `}
+                onClick={() => {setActiveForm("downloadCv")
+                                setPreview(false)}}
+                data-tooltip-id="preview-download-cv-tooltip"
+                data-tooltip-place="right"
+                >
+                        <FontAwesomeIcon icon={faFileArrowDown} size="2x" />
+                </button>     
+
+                <Tooltip
+                id='preview-download-cv-tooltip'
+                className='tooltip'
+                content='Preview PDF & Download'
+                />
+
+                <button
+                className='nav-btn'
+                onClick={() => {
+                if (window.confirm('Are you sure you want to clear all data?')) {
+                    localStorage.clear();
+                    window.location.reload();
+                }
+            }}
+            data-tooltip-id='clear-data-tooltip'
+            data-tooltip-content='Clear CV'
+            data-tooltip-place="right">
+
+            <FontAwesomeIcon icon={faTrash} size='2x' />
+        </button>
+            <Tooltip
+             id='clear-data-tooltip'
+             className='tooltip'
+                />
+        </div>
+        </div>
             {/* Main Content Area */}
-            <div className={`main-container ${preview ? "preview-active" : ''}`}>
+            <div className={`main-container ${preview && "preview-active"}`}>
                 <div className='main-content'>
                     {activeForm === 'personal' && (
                         <GeneralInfo personalInfo={personalInfo} setPersonalInfo={setPersonalInfo} />
@@ -193,30 +238,48 @@ function App() {
                     
                     {activeForm === 'projects' && (
                         <Project project={project} setProject={setProject} />
+                    
                     )}
                     
                     {activeForm === 'education' && (
                         <Education education={education} setEducation={setEducation} />
                     )}
+
                     {activeForm === "certificate" &&  (
                         <Certification certification={certification} setCertification={setCertification}/>
                     )}
+                   
+                   {activeForm === 'downloadCv' && 
+                    <div className='cv-download-container'>
+                        <DownloadCv
+                        personalInfo={personalInfo}
+                        link={link}
+                        technicalSkill={technicalSkill}
+                        workExperience={workExperience}
+                        project={project}
+                        education={education}
+                        certification={certification}
+                        />
+                    </div>
+                    }
                 </div>
-
                 {/* CV Preview - can be always visible or toggled */}
-                <div className={`cv-preview-container ${preview ? "active" : ''}`}>
+                    <div className={`cv-preview-container ${preview && "active"}`}>
                     <CvPreview
                         personalInfo={personalInfo}
                         link={link}
                         technicalSkill={technicalSkill}
                         workExperience={workExperience}
                         project={project}
-                        certification={certification}
                         education={education}
-                    /> 
+                        certification={certification}
+                        /> 
                 </div>
+                
             </div>
+            
         </div>
+        
     )
 }
 

@@ -26,14 +26,15 @@ const TechnicalSkills = ({ technicalSkill, setTechnicalSkill }) => {
     };
 
     return (
-            <div className="skill-form-container">
-                <div className="form-scrollable">
+        <div className="skill-form-container">
+            <div className="skill-form">
+                <div className="skill-form-scrollable">
                     {Object.entries(technicalSkill).map(([category, skills]) => (
                         <div key={category} className="skill-category">
                             <h4 className="category-title">
                                 {category === 'languages' ? "Languages" :
                                     category === 'framework' ? "Frameworks, Libraries & Databases" :
-                                    "Tools & Other Technologies"}
+                                    category === 'tools' ? "Tools & Other Technologies" : 'Frameworks, Libraries & Databases'}
                             </h4>
                             <div className="skills-list">
                                 {skills.map(({ id, skill }) =>
@@ -58,6 +59,7 @@ const TechnicalSkills = ({ technicalSkill, setTechnicalSkill }) => {
                     ))}
                 </div>
         </div>
+    </div>
     )
 }
 
