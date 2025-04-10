@@ -275,10 +275,11 @@ function App() {
                         certification={certification}
                         /> 
                 </div>
-                
+
             </div>
-            
+       
         </div>
+
         
     )
 }
