@@ -4,10 +4,10 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import '../styles/cvPreview.css'
 
 
-function CvPreview({personalInfo , link , technicalSkill , workExperience , project , education , certification}){
+function CvPreview({personalInfo , link , technicalSkill , workExperience , project , education , certification,font}){
     return (
         <>
-        <div className='cv-preview-content'>
+        <div className='cv-preview-content' style={{fontFamily: font}}>
                 <div className="personal-details-section">
                 <h1> {personalInfo.name || "Your Name"}  </h1>
                 <h3> {personalInfo.job || "Job Title"} </h3>
@@ -20,7 +20,7 @@ function CvPreview({personalInfo , link , technicalSkill , workExperience , proj
                 <hr/>
                 <p> Phone Number: {personalInfo.tel || "969-969-969"} </p>
                 <p> Address: {personalInfo.address || "Blue Island, metaverse"} </p>
-                <p> summary: {personalInfo.summary || ""} </p>
+                <p> {personalInfo.summary ? `summary: ${personalInfo.summary}` : ""} </p>
                 </div>
                 
                 <div className="technical-skill-section"> 
@@ -36,7 +36,7 @@ function CvPreview({personalInfo , link , technicalSkill , workExperience , proj
                 <h3> Frameworks, Libraries & Databases: </h3>
                     <ul>
                         {technicalSkill.frameworks.map(({id,skill})=>
-                            <li key={id}> {skill || ""} </li>
+                            <li key={id}> {skill || "Frameworks, Libraries & Databases"} </li>
                     )}
                     </ul>
 

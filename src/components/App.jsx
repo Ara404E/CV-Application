@@ -1,4 +1,3 @@
-import { useState , useEffect } from 'react'
 import { Tooltip } from 'react-tooltip';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import 'react-tooltip/dist/react-tooltip.css'; 
@@ -15,12 +14,16 @@ import Education from './education.jsx';
 import Certification from './certification.jsx';
 import DownloadCv from './downloadCv.jsx'
 import { useLocalStorage } from './localStorage.js';
+import "@fontsource/inter"; 
+import "@fontsource/roboto";
+import "@fontsource/source-sans-pro";
+
+
 
 function App() {
+
     const [activeForm, setActiveForm] = useLocalStorage('activeForm' , 'personal');
     const [preview, setPreview] = useLocalStorage( "preview" , false);
-
-
 
     const [personalInfo, setPersonalInfo] = useLocalStorage( 'personalInfo' , {
         name: "",
@@ -65,6 +68,8 @@ function App() {
         certificate: '', skill: '', interest: ''
     });
 
+    const [font , setFont]  = useLocalStorage('font' , 'Garamond, serif')
+
     return (
         <div className='app'>
             {/* Sidebar Navigation */}
@@ -72,7 +77,7 @@ function App() {
                 <button 
                     className={`nav-btn ${activeForm === 'personal' && 'active'}`}
                     onClick={() => setActiveForm('personal')}
-                    data-tooltip-id="personal-details-tooltip"  // Changed to more unique ID
+                    data-tooltip-id="personal-details-tooltip"  
                     data-tooltip-content="Personal Details"
                     data-tooltip-place="right" 
                 >
@@ -164,7 +169,7 @@ function App() {
             <button
                     className={`nav-btn ${  preview && 'active'}`}
                     onClick={() => setPreview(!preview) }
-                    disabled={activeForm === 'downloadCv'} // 👈 this disables the button
+                    disabled={activeForm === 'downloadCv'} 
                     data-tooltip-id='live-preview-tooltip'
                     data-tooltip-place="right"
 
@@ -217,9 +222,12 @@ function App() {
                 />
         </div>
         </div>
+        
             {/* Main Content Area */}
             <div className={`main-container ${preview && "preview-active"}`}>
+                
                 <div className='main-content'>
+                    
                     {activeForm === 'personal' && (
                         <GeneralInfo personalInfo={personalInfo} setPersonalInfo={setPersonalInfo} />
                     )}
@@ -259,6 +267,7 @@ function App() {
                         project={project}
                         education={education}
                         certification={certification}
+                        font={font}
                         />
                     </div>
                     }
@@ -273,11 +282,12 @@ function App() {
                         project={project}
                         education={education}
                         certification={certification}
+                        font={font}
                         /> 
                 </div>
 
             </div>
-       
+            <FontSwitcher  setFont={setFont}/>
         </div>
 
         

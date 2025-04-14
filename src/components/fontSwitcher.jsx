@@ -1,19 +1,47 @@
 import { useState } from "react";
-import '../styles/font-switcher.css'
+import '../styles/font-switcher.css';
 
-const FontSwitcher = ()=>{
-    const [font , setFont] = useState("Garamond")
+const FontSwitcher = ({setFont}) => {
+
+    const [showOptions, setShowOptions] = useState(false);
+    
+    const fonts = [
+        { name: "Inter", value: "'Inter', sans-serif" },
+        { name: "Roboto", value: "'Roboto', sans-serif" },
+        { name: "Source Sans Pro", value: "'Source Sans Pro', sans-serif" },
+    ];
+    const handleFontChange = (selectedFont) => {
+        setFont(selectedFont);
+        setShowOptions(false);
+    };
 
     return (
-        <div className="font-switcher" style={{fontFamily:font}}>
-            <h1> Choose the desired Font style for your CV </h1>
-            <div className="buttons-div">
-                <button onClick={() => setFont("Garamond") }> Garamond </button>
-                <button onClick={() => setFont("Times New Roman")}> Times New Roman </button>
-                <button onClick={() => setFont("Georgia")}> Georgia </button>
-            </div>
+        <div className="floating-font-switcher">
+            <button 
+                className="font-toggle-button"
+                onClick={() => setShowOptions(!showOptions)}
+                aria-label="Change font style"
+            >
+                Aa
+            </button>
+
+            {showOptions &&            
+            <div className="font-options">
+                    {fonts.map((selectedFont) =>
+                        <button 
+                        value={selectedFont.value}
+                        className="font-option"
+                        onClick={() => handleFontChange(selectedFont.value)}
+                        style={{fontFamily: selectedFont.value}}                        
+                        >
+                            {selectedFont.name}
+                        </button>
+                    )}
+            </div>}
+            
+       
         </div>
-    )
-} 
+    );
+};
 
 export default FontSwitcher;

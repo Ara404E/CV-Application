@@ -112,7 +112,7 @@ const Education = ({ education, setEducation }) => {
                                     <input
                                         type="text"
                                         value={proj.project}
-                                        placeholder="List your honors like summa cum laude or Economics Honors Society; 3.X/4.0"
+                                        placeholder="List your honors and achievements"
                                         onChange={(e) => handleProjectChange(id, idx, e.target.value)}
                                         className="bullet-point-input"
                                         />

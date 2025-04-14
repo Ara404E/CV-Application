@@ -5,9 +5,10 @@ import html2pdf from 'html2pdf.js';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {  faLaptop, faEnvelope,faCircleDown}  from "@fortawesome/free-solid-svg-icons"
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+
 import '../styles/downloadCv.css'
 
-const DownloadCv = ({personalInfo , link , technicalSkill , workExperience , project , education , certification}) => {
+const DownloadCv = ({personalInfo , link , technicalSkill , workExperience , project , education , certification, font}) => {
 
     const cvRef = useRef();
 
@@ -209,8 +210,7 @@ const DownloadCv = ({personalInfo , link , technicalSkill , workExperience , pro
                     <span> DOCX</span>
                 </button>
             </div>
-            <div className='download-cv-content' ref={cvRef}>
-                {/* Rest of your existing JSX remains unchanged */}
+            <div className='download-cv-content'  style={{fontFamily: font}} ref={cvRef}>
                 <div className="personal-details-section">
                     <h1> {personalInfo.name || "Your Name"}  </h1>
                     <h3> {personalInfo.job || "Job Title"} </h3>
@@ -223,8 +223,8 @@ const DownloadCv = ({personalInfo , link , technicalSkill , workExperience , pro
                     <hr/>
                     <p> Phone Number: {personalInfo.tel || "969-969-969"} </p>
                     <p> Address: {personalInfo.address || "Blue Island, metaverse"} </p>
-                    <p> summary: {personalInfo.summary || ""} </p>
-                </div>
+                    <p> {personalInfo.summary ? `summary: ${personalInfo.summary}` : ""} </p>
+                    </div>
                 
                 <div className="technical-skill-section"> 
                     <h2> TECHNICAL SKILLS </h2>
@@ -238,7 +238,7 @@ const DownloadCv = ({personalInfo , link , technicalSkill , workExperience , pro
                     <h3> Frameworks, Libraries & Databases: </h3>
                     <ul>
                         {technicalSkill.frameworks.map(({id,skill})=>
-                            <li key={id}> {skill || ""} </li>
+                            <li key={id}> {skill || "Frameworks, Libraries & Databases"} </li>
                         )}
                     </ul>
 
