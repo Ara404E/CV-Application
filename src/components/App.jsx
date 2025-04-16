@@ -68,7 +68,7 @@ function App() {
         certificate: '', skill: '', interest: ''
     });
 
-    const [font , setFont]  = useLocalStorage('font' , 'Garamond, serif')
+    const [font , setFont]  = useLocalStorage('font' , "'Inter', sans-serif")
 
     return (
         <div className='app'>
@@ -287,7 +287,7 @@ function App() {
                 </div>
 
             </div>
-            <FontSwitcher  setFont={setFont}/>
+            <FontSwitcher  font={font} setFont={setFont}/>
         </div>
 
         

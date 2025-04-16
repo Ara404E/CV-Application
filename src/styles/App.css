@@ -209,16 +209,3 @@ textarea {
   background-color: #FF2E63;
   color: white;
 }
-
-
-
-.plug-container{
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-  color:#FFEFEF ;
-}
-.plug-paragraph{
-  margin: 10px 0;
-  text-align: center;
-}

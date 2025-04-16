@@ -55,8 +55,8 @@ const Link = ({ link, setLink }) => {
                         <input
                             type="url"
                             value={link.github}
-                            placeholder="www.github.com/johndoe"
-                            onChange={(e) => setLink({ ...link, github: e.target.value })}
+                            placeholder="Github"
+                            onChange={(e) => setLink({...link , github:e.target.value})}
                             className="link-input url-input"
                             />
                         <input

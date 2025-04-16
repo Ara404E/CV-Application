@@ -48,6 +48,11 @@
   transition: all 0.2s;
   text-align: left;
 }
+.font-option.active{
+  background-color: #E53888;
+  color: white;
+  font-weight: 500;
+}
 
 .font-option:hover {
   background: #E53888;

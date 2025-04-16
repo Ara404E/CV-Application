@@ -1,7 +1,7 @@
 import { useState } from "react";
 import '../styles/font-switcher.css';
 
-const FontSwitcher = ({setFont}) => {
+const FontSwitcher = ({font,setFont}) => {
 
     const [showOptions, setShowOptions] = useState(false);
     
@@ -30,7 +30,7 @@ const FontSwitcher = ({setFont}) => {
                     {fonts.map((selectedFont) =>
                         <button 
                         value={selectedFont.value}
-                        className="font-option"
+                        className={`font-option ${font === selectedFont.value && 'active'}`}
                         onClick={() => handleFontChange(selectedFont.value)}
                         style={{fontFamily: selectedFont.value}}                        
                         >

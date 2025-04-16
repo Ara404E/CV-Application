@@ -84,7 +84,7 @@ function CvPreview({personalInfo , link , technicalSkill , workExperience , proj
                         </div> 
                         <div>
                             {project.bulletPoints.map((project,index) => 
-                                        <li key={index}> {project} </li>
+                                        <li className="bullet-point-project" key={index}> {project} </li>
                                     )}
                         </div>
                     </div>

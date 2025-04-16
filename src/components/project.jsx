@@ -56,7 +56,7 @@ const Project = ({ project, setProject }) => {
     <div className="project-container">
         <div className="project-form">
             <div className="project-form-scrollable">
-                {project.map(({ id, name, techStack, bulletPoints, repoURL, repoText, demoURL, demoText }) => (
+                {project.map(({ id, name, techStack, bulletPoints, repoURL, repoText, demoURL, demo }) => (
                     <div key={id} className="project-input-container">
                         <h3>Project {project.findIndex(p => p.id === id) + 1}</h3>
                         <div className="project-top-form-row">
@@ -141,9 +141,9 @@ const Project = ({ project, setProject }) => {
                                     />
                                 <input
                                     type="text"
-                                    value={demoText}
+                                    value={demo}
                                     placeholder="Live Preview/Website(Text)"
-                                    onChange={(e) => handleInputChange(id, "demoText", e.target.value)}
+                                    onChange={(e) => handleInputChange(id, "demo", e.target.value)}
                                     />
                             </div>
                         </div>
