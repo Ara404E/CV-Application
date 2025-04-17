@@ -216,7 +216,7 @@ const DownloadCv = ({personalInfo , link , technicalSkill , workExperience , pro
                     <h3> {personalInfo.job || "Job Title"} </h3>
                     <div className='link-section'>
                         <p> {personalInfo.email ? <FontAwesomeIcon icon={faEnvelope} /> :  "your.email.com"} <a href={personalInfo.email}> {personalInfo.email} </a> </p>
-                        {/* <p> {link.website ?  <FontAwesomeIcon icon={faLaptop} /> : "website URL"} <a href={link.website}> {link.websiteText || 'displayed text'}  </a> </p> */}
+                        <p> {link.website ?  <FontAwesomeIcon icon={faLaptop} /> : "website URL"} <a href={link.website}> {link.websiteText || 'displayed text'}  </a> </p>
                         <p> {link.linkedin ? <FontAwesomeIcon icon={faLinkedin} /> : "Website URL"} <a href={link.linkedin} > {link.linkedinText || 'displayed text'} </a> </p> 
                         <p> {link.github ? <FontAwesomeIcon icon={faGithub} /> : 'Website URL'} <a href={link.github} >  {link.githubText || 'displayed text '} </a> </p>
                     </div>
@@ -250,7 +250,7 @@ const DownloadCv = ({personalInfo , link , technicalSkill , workExperience , pro
                     </ul>
                 </div>
 
-                {/* <h3> WORK EXPERIENCE </h3>
+                <h3> WORK EXPERIENCE </h3>
                 <hr/>
                 {workExperience.map((work)=> (
                     <div>
@@ -269,7 +269,7 @@ const DownloadCv = ({personalInfo , link , technicalSkill , workExperience , pro
                                 <li key={index}> {specification.specification}  </li>)}
                         </div>
                     </div>
-                ))} */}
+                ))}
 
                 <h3> PROJECTS </h3>
                 <hr/>
