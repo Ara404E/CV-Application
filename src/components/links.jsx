@@ -12,7 +12,7 @@ const Link = ({ link, setLink }) => {
                     </div>
                     
                     {/* Website */}
-                    {/* <div className="link-row">
+                    <div className="link-row">
                         <label className="link-label">Website</label>
                         <input
                             type="url"
@@ -28,7 +28,7 @@ const Link = ({ link, setLink }) => {
                             onChange={(e) => setLink({ ...link, websiteText: e.target.value })}
                             className="link-input text-input"
                             />
-                    </div> */}
+                    </div>
                     
                     {/* LinkedIn */}
                     <div className="link-row">
