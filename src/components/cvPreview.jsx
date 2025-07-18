@@ -19,7 +19,7 @@ function CvPreview({personalInfo , link , technicalSkill , workExperience , proj
                 </div>
                 <hr/>
                 <p> Phone Number: {personalInfo.tel || "969-969-969"} </p>
-                <p> Address: {personalInfo.address || "Blue Island, metaverse"} </p>
+                <p> Address: {personalInfo.address } </p>
                 <p> {personalInfo.summary ? `summary: ${personalInfo.summary}` : ""} </p>
                 </div>
                 
