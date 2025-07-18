@@ -59,7 +59,7 @@ const DownloadCv = ({personalInfo , link , technicalSkill , workExperience , pro
                         new Paragraph({
                             children: [
                                 new TextRun({text: `Phone: ${personalInfo.tel || "969-969-969"}`}),
-                                new TextRun({text: `\nAddress: ${personalInfo.address || "Blue Island, Metaverse"}`}),
+                                // new TextRun({text: `\nAddress: ${personalInfo.address || "Blue Island, Metaverse"}`}),
                             ]
                         }),
                         new Paragraph({

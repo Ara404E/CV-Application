@@ -35,8 +35,8 @@ function App() {
     });
 
     const [link, setLink] = useLocalStorage("link" , {
-        website: "",
-        websiteText: '',
+        // website: "",
+        // websiteText: '',
         linkedin: "",
         linkedinText: '',
         github: "",
