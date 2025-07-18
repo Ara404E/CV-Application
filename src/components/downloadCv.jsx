@@ -41,11 +41,11 @@ const DownloadCv = ({personalInfo , link , technicalSkill , workExperience , pro
                                 new TextRun({text: `Email: ${personalInfo.email || "your.email@xyz.com"}`}),
                             ]
                         }),
-                        new Paragraph({
-                            children: [
-                                new TextRun({text: `Website: ${link.websiteText || "yourwebsite.com"} (${link.website || ""})`}),
-                            ]
-                        }),
+                        // new Paragraph({
+                        //     children: [
+                        //         new TextRun({text: `Website: ${link.websiteText || "yourwebsite.com"} (${link.website || ""})`}),
+                        //     ]
+                        // }),
                         new Paragraph({
                             children: [
                                 new TextRun({text: `LinkedIn: ${link.linkedinText || "linkedin profile"} (${link.linkedin || ""})`}),
@@ -134,7 +134,7 @@ const DownloadCv = ({personalInfo , link , technicalSkill , workExperience , pro
                                     new TextRun({text: proj.demo || "", style: 'Hyperlink'}),
                                 ]
                             }),
-                            ...proj.bulletPoints.map((point, index) => 
+                            ...proj.bulletPoints.map((point) => 
                                 new Paragraph({
                                     text: `• ${point}`,
                                     indent: { left: 720 }
