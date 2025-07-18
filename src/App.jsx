@@ -2,18 +2,18 @@ import { Tooltip } from 'react-tooltip';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import 'react-tooltip/dist/react-tooltip.css'; 
 import { faUser, faLink, faBrain, faBriefcase, faFolderOpen, faUserGraduate, faAward , faEye, faTrash, faEyeSlash,faFileArrowDown } from "@fortawesome/free-solid-svg-icons";
-import '../styles/App.css'
-import FontSwitcher from './fontSwitcher'; 
-import GeneralInfo from './generalInfo';
-import Link from './links.jsx';
-import TechnicalSkills from './technicalSkills.jsx';
-import CvPreview from './cvPreview.jsx';
-import WorkExperience from './workExperience.jsx';
-import Project from './project.jsx';
-import Education from './education.jsx';
-import Certification from './certification.jsx';
-import DownloadCv from './downloadCv.jsx'
-import { useLocalStorage } from './localStorage.js';
+import './styles/App.css'
+import FontSwitcher from './components/fontSwitcher.jsx'; 
+import GeneralInfo from './components/generalInfo.jsx';
+import Link from './components/links.jsx';
+import TechnicalSkills from './components/technicalSkills.jsx';
+import CvPreview from './components/cvPreview.jsx';
+import WorkExperience from './components/workExperience.jsx';
+import Project from './components/project.jsx';
+import Education from './components/education.jsx';
+import Certification from './components/certification.jsx';
+import DownloadCv from './components/downloadCv.jsx'
+import { useLocalStorage } from './components/localStorage.js';
 import "@fontsource/inter"; 
 import "@fontsource/roboto";
 import "@fontsource/source-sans-pro";
